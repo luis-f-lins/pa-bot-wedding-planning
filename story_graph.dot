@@ -1,0 +1,33 @@
+digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class=active, fontsize=12, label=action_session_start];
+2 [class=active, fontsize=12, label=start_process];
+3 [class=active, fontsize=12, label=whats_next];
+4 [class=active, fontsize=12, label=choose_date];
+5 [class=active, fontsize=12, label=askUser1_form];
+7 [class=active, fontsize=12, label=whats_next];
+9 [class=active, fontsize=12, label=book_band];
+10 [class="dashed active", fontsize=12, label=whats_next];
+11 [class="intent active", fillcolor=lightblue, label="i want to plan a wedding", shape=rect, style=filled];
+12 [class="intent active", fillcolor=lightblue, label="i have the dates", shape=rect, style=filled];
+13 [class="intent active", fillcolor=lightblue, label="next week", shape=rect, style=filled];
+14 [class="intent active", fillcolor=lightblue, label="i've booked the band", shape=rect, style=filled];
+15 [class="intent active", fillcolor=lightblue, label="i want to book the venue", shape=rect, style=filled];
+0 -> "-1"  [class="", key=NONE, label=""];
+0 -> 1  [class=active, key=NONE, label=""];
+1 -> 11  [class=active, key=0];
+2 -> 3  [class=active, key=NONE, label=""];
+3 -> 12  [class=active, key=0];
+4 -> 5  [class=active, key=NONE, label=""];
+5 -> 7  [class=active, key=NONE, label=""];
+5 -> 13  [class=active, key=0];
+7 -> 14  [class=active, key=0];
+7 -> 15  [class=active, key=0];
+9 -> 10  [class=active, key=NONE, label=""];
+11 -> 2  [class=active, key=0];
+12 -> 4  [class=active, key=0];
+13 -> 5  [class=active, key=0];
+14 -> 9  [class=active, key=0];
+15 -> 7  [class=active, key=0];
+}

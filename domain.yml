@@ -1,0 +1,68 @@
+session_config:
+  session_expiration_time: 60.0
+  carry_over_slots_to_new_session: false
+intents:
+  - choose_date
+  - book_band
+  - book_caterer
+  - book_photographer
+  - book_venue
+  - start_process
+  - greet
+  - mood_great
+  - out_of_scope
+  - now_what
+  - goodbye
+  - affirm
+  - bot_challenge
+  - deny
+  - bot_love
+  - mood_unhappy
+templates:
+  utter_botlove:
+    - text: I love being a bot. Thanks for asking! Do you like being a human?
+  utter_cheer_up:
+    - image: https://i.imgur.com/nGF1K8f.jpg
+      text: "Here is something to cheer you up:"
+  utter_default_fallback:
+    - text: I'm sorry. I didn't understand what you said.
+  utter_did_that_help:
+    - text: Did that help you?
+  utter_goodbye:
+    - text: Bye
+  utter_greet:
+    - text: Hey! How are you?
+  utter_happy:
+    - text: Great, carry on!
+  utter_iamabot:
+    - text: I am a bot, powered by Rasa.
+  utter_okay:
+    - text: Okay. I'll be waiting for you.
+  utter_picktask:
+    - text: Okay. Pick any task you'd like.
+  utter_sorry:
+    - text: Sorry, I'll try to do better next time!
+  utter_ask_chosenDate:
+    - text: What is the wedding date?
+actions:
+  - choose_date
+  - book_band
+  - book_caterer
+  - book_photographer
+  - book_venue
+  - start_process
+  - whats_next
+  - utter_default_fallback
+  - utter_greet
+  - utter_happy
+  - ask_user
+slots:
+  userWantsToBookATransfer:
+    auto_fill: false
+    type: unfeaturized
+  chosenDate:
+      auto_fill: false
+      type: unfeaturized
+forms:
+  - askUser1_form
+  - askUser2_form
