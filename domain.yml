@@ -2,38 +2,39 @@ session_config:
   session_expiration_time: 60.0
   carry_over_slots_to_new_session: false
 intents:
-  - choose_date
-  - book_band
-  - book_caterer
-  - book_photographer
-  - book_venue
-  - start_process
-  - greet
-  - now_what
-  - affirm
-  - deny
-templates:
-  utter_default_fallback:
-    - text: I'm sorry. I didn't understand what you said.
-  utter_greet:
-    - text: Hi! I am the Process-Aware bot. How can I help you today?
-  utter_ask_chosenDate:
-    - text: What is the wedding date?
-actions:
-  - choose_date
-  - book_band
-  - book_caterer
-  - book_photographer
-  - book_venue
-  - start_process
-  - whats_next
-  - utter_default_fallback
-  - utter_greet
-  - utter_happy
-  - ask_user
+- choose_date
+- book_band
+- book_caterer
+- book_photographer
+- book_venue
+- start_process
+- greet
+- now_what
+- affirm
+- deny
 slots:
   chosenDate:
-      auto_fill: false
-      type: unfeaturized
+    type: unfeaturized
+    auto_fill: false
+responses:
+  utter_default_fallback:
+  - text: I'm sorry. I didn't understand what you said.
+  utter_greet:
+  - text: Hi! I am the Process-Aware bot. How can I help you today?
+  utter_ask_chosenDate:
+  - text: What is the wedding date?
+actions:
+- choose_date
+- book_band
+- book_caterer
+- book_photographer
+- book_venue
+- start_process
+- whats_next
+- utter_default_fallback
+- utter_greet
+- utter_happy
+- ask_user
+- utter_ask_chosenDate
 forms:
-  - ask_wedding_date
+- ask_wedding_date
