@@ -41,24 +41,16 @@ class StartProcess(Action):
         return [AllSlotsReset()]
 
 
-def completeCurrentTaskWithPayload(postPayload):
+def completeCurrentTask(postPayload = {}):
     global currentTaskId 
     url = 'http://localhost:8080/engine-rest/task/' + currentTaskId + '/complete'
     response = requests.post(url, json=postPayload)
-    print(response.text)
-    return
-
-def completeCurrentTaskWithoutPayload():
-    global currentTaskId 
-    url = 'http://localhost:8080/engine-rest/task/' + currentTaskId + '/complete'
-    response = requests.post(url, json={})
-    print(response.text)
     return
 
 
-class AskUser1Form(FormAction):
+class AskWeddingDate(FormAction):
     def name(self) -> Text:
-        return "askUser1_form"
+        return "ask_wedding_date"
 
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
@@ -80,7 +72,7 @@ class AskUser1Form(FormAction):
         postPayload = {"variables": {"chosenDate": {
             "value": tracker.get_slot("chosenDate")}}, "withVariablesInReturn": True}
 
-        completeCurrentTaskWithPayload(postPayload)
+        completeCurrentTask(postPayload)
 
         return [FollowupAction("whats_next")]
 
@@ -107,7 +99,7 @@ class ChooseDate(Action):
             global currentTaskId 
             currentTaskId = availableTask['id']
 
-            return [FollowupAction("askUser1_form")]
+            return [FollowupAction("ask_wedding_date")]
 
 
 class BookBand(Action):
@@ -131,7 +123,7 @@ class BookBand(Action):
         else:  
             global currentTaskId 
             currentTaskId = availableTask['id']
-            completeCurrentTaskWithoutPayload()
+            completeCurrentTask()
 
             return []
 
@@ -157,7 +149,7 @@ class BookPhotographer(Action):
         else:
             global currentTaskId 
             currentTaskId = availableTask['id']
-            completeCurrentTaskWithoutPayload()
+            completeCurrentTask()
 
         return []
 
@@ -183,7 +175,7 @@ class BookCaterer(Action):
         else:
             global currentTaskId 
             currentTaskId = availableTask['id']
-            completeCurrentTaskWithoutPayload()
+            completeCurrentTask()
 
         return []
 
@@ -208,7 +200,7 @@ class BookVenue(Action):
         else:
             global currentTaskId 
             currentTaskId = availableTask['id']
-            completeCurrentTaskWithoutPayload()
+            completeCurrentTask()
 
         return []
 
@@ -217,25 +209,19 @@ class WhatsNext(Action):
     def name(self):
         return "whats_next"
 
-    def run(self, dispatcher, tracker, domain):
+    def run(self, dispatcher, tracker, domain):        
         jsonObj = requests.get(taskGetUrl).json()
 
         response = requests.get(processInstanceGetUrl)
-
         processStillExists = response.status_code
 
-        print(jsonObj)
-
-        if len(jsonObj) > 0:
-            dispatcher.utter_message(text='The available tasks are:')
-        elif (processStillExists == 404):
+        if (processStillExists == 404):
             dispatcher.utter_message(text='Congratulations! You\'re all done!')
 
-        for i in jsonObj:
-            # if i['description'] != None and "askUser" in i['description']:
-            #     return [FollowupAction("ask_user_form")]
+        elif len(jsonObj) > 0:
+            dispatcher.utter_message(text='The available tasks are:')
 
-            # else:
+            for i in jsonObj:
                 utteredMessage = '- ' + i['name']
                 dispatcher.utter_message(text=utteredMessage)
 

@@ -4,11 +4,10 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>SequenceFlow_14ibw8p</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="choose_date" name="Choose date" camunda:formKey="choose_date">
-      <bpmn:documentation>askUser1</bpmn:documentation>
+    <bpmn:userTask id="choose_date" name="Choose date" camunda:formKey="ask_wedding_date">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="chosenDate" label="What is your wedding date?" type="string" />
+          <camunda:formField id="chosenDate" label="What is the wedding date?" type="string" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_14ibw8p</bpmn:incoming>

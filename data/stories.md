@@ -1,12 +1,6 @@
-## get back on track
-* out_of_scope
-    - utter_default_fallback
-
-## interactive_story_1
+## greet
 * greet
     - utter_greet
-* mood_great
-    - utter_happy
     - action_listen
 
 ## start process
@@ -14,22 +8,22 @@
     - start_process
     - whats_next
 
-## book flight
+## choose date
 * choose_date
     - choose_date
     - whats_next
 
-## book hotel
+## book band
 * book_band
     - book_band
     - whats_next
 
-## book tour
+## book caterer
 * book_caterer
     - book_caterer
     - whats_next
 
-## book transfer
+## book photographer
 * book_photographer
     - book_photographer
     - whats_next
