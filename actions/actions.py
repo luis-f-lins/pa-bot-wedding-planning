@@ -222,7 +222,7 @@ class WhatsNext(Action):
             messageToUtter = 'The available tasks are:\n'
 
             for i in jsonObj:
-                messageToUtter = messageToUtter + '- ' + i['name'] + '\n'
+                messageToUtter = messageToUtter + '\n- ' + i['name']
 
             dispatcher.utter_message(text=messageToUtter)
 

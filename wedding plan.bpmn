@@ -26,20 +26,6 @@
     <bpmn:sequenceFlow id="SequenceFlow_06safu6" sourceRef="book_band" targetRef="ExclusiveGateway_0x3vxu8" />
     <bpmn:sequenceFlow id="SequenceFlow_07jml1v" sourceRef="ExclusiveGateway_096xg1f" targetRef="book_band" />
     <bpmn:sequenceFlow id="SequenceFlow_1pxryux" sourceRef="ExclusiveGateway_0x3vxu8" targetRef="finish_booking" />
-    <bpmn:inclusiveGateway id="ExclusiveGateway_096xg1f">
-      <bpmn:incoming>SequenceFlow_1fvc9ns</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_07jml1v</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_1w89yur</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_17b46r1</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0041c8x</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
-    <bpmn:inclusiveGateway id="ExclusiveGateway_0x3vxu8">
-      <bpmn:incoming>SequenceFlow_06safu6</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1ls92jx</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1hq46fq</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_0uv7h1h</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1pxryux</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
     <bpmn:userTask id="book_photographer" name="Book photographer">
       <bpmn:incoming>SequenceFlow_1w89yur</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ls92jx</bpmn:outgoing>
@@ -62,6 +48,20 @@
       <bpmn:incoming>SequenceFlow_1pxryux</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0an5hs1</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:parallelGateway id="ExclusiveGateway_096xg1f">
+      <bpmn:incoming>SequenceFlow_1fvc9ns</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_07jml1v</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1w89yur</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_17b46r1</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0041c8x</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_0x3vxu8">
+      <bpmn:incoming>SequenceFlow_06safu6</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1ls92jx</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1hq46fq</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0uv7h1h</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1pxryux</bpmn:outgoing>
+    </bpmn:parallelGateway>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="wedding_planning">
@@ -103,12 +103,6 @@
         <di:waypoint x="765" y="277" />
         <di:waypoint x="880" y="277" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="InclusiveGateway_1j2ji2c_di" bpmnElement="ExclusiveGateway_096xg1f">
-        <dc:Bounds x="445" y="252" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="InclusiveGateway_1bud8bs_di" bpmnElement="ExclusiveGateway_0x3vxu8">
-        <dc:Bounds x="715" y="252" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_04snu1s_di" bpmnElement="book_photographer">
         <dc:Bounds x="550" y="237" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -148,6 +142,12 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1n2b6p8_di" bpmnElement="finish_booking">
         <dc:Bounds x="880" y="237" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_0vkm75g_di" bpmnElement="ExclusiveGateway_096xg1f">
+        <dc:Bounds x="445" y="252" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_1iux63m_di" bpmnElement="ExclusiveGateway_0x3vxu8">
+        <dc:Bounds x="715" y="252" width="50" height="50" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
